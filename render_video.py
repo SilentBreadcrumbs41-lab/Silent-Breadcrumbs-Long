@@ -6,20 +6,20 @@ import shutil
 
 # --- VARIABLES ---
 scenes_data = json.loads(os.environ.get('SCENES_DATA', '[]'))
-title = os.environ.get('TITLE', 'The Psychology of Wealth')
-description = os.environ.get('DESCRIPTION', 'Master your financial mindset and learn the secrets of the 1%.')
-thumbnail_prompt = os.environ.get('THUMBNAIL_PROMPT', 'Cinematic luxury modern office wealth mindset thumbnail')
+title = os.environ.get('TITLE', 'The Unsolved Enigma')
+description = os.environ.get('DESCRIPTION', 'Decode the hidden clues behind the worlds most baffling unsolved paradoxes.')
+thumbnail_prompt = os.environ.get('THUMBNAIL_PROMPT', 'Cinematic dark foggy mystery landscape, highly detailed')
 pexels_key = os.environ.get('PEXELS_API_KEY')
 chat_id = os.environ.get('CHAT_ID')
 telegram_token = os.environ.get('TELEGRAM_BOT_TOKEN')
 
 # 👇 Channel Watermark
-channel_name = "POW®" 
+channel_name = "Silent Breadcrumbs" 
 
 print(f"DEBUG: Processing {len(scenes_data)} scenes async...")
 
-# --- SMART DYNAMIC FALLBACK KEYWORDS ---
-fallback_env = os.environ.get('FALLBACK_KEYWORDS', 'modern city architecture, luxury office desk, abstract chess game, wall street city, minimalist luxury, clean aesthetic background')
+# --- SMART DYNAMIC FALLBACK KEYWORDS (Metaphorical Visuals) ---
+fallback_env = os.environ.get('FALLBACK_KEYWORDS', 'dark nature, foggy forest path, abandoned architecture, night urban, shadows moving, cinematic dark, macro space nebulas, vintage clockworks')
 FALLBACK_KEYWORDS = [kw.strip() for kw in fallback_env.split(',')]
 
 TEMP_DIR = "/dev/shm" if os.path.exists("/dev/shm") else os.getcwd()
@@ -67,7 +67,7 @@ async def fetch_pexels_video(session, keyword):
     return None
 
 async def process_scene(session, i, scene, total_scenes):
-    keyword = scene.get('keyword', 'modern business')
+    keyword = scene.get('keyword', 'cinematic dark')
     text_line = scene.get('text', '').strip()
     if not text_line: return None
     
@@ -269,7 +269,8 @@ async def main_pipeline():
         
         run_id = os.environ.get('GITHUB_RUN_ID', str(int(time.time())))
         tag_name = f"vid-{run_id}"
-        repo_name = os.environ.get('GITHUB_REPOSITORY', "PsychologyofWealth-cloud/Long") 
+        # 👇 Repo name updated based on the image
+        repo_name = os.environ.get('GITHUB_REPOSITORY', "SilentBreadcrumbs41-lab/Silent-Breadcrumbs-Long") 
         
         try:
             cmd = ['gh', 'release', 'create', tag_name, final_video, '--repo', repo_name, '--notes', 'Automated Video Render']
