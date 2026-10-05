@@ -19,7 +19,7 @@ channel_name = "Silent Breadcrumbs®"
 print(f"DEBUG: Processing {len(scenes_data)} scenes async...")
 
 # --- SMART DYNAMIC FALLBACK KEYWORDS (Metaphorical Visuals) ---
-fallback_env = os.environ.get('FALLBACK_KEYWORDS', 'dark nature, foggy forest path, abandoned architecture, night urban, shadows moving, cinematic dark, macro space nebulas, vintage clockworks')
+fallback_env = os.environ.get('FALLBACK_KEYWORDS', 'dark nature, foggy forest path, abandoned architecture, night urban, shadows moving, cinematic dark, macro space nebulas, vintage clockworks, abstract data lines, microscopic cells, deep space stars, geometric abstract shapes')
 FALLBACK_KEYWORDS = [kw.strip() for kw in fallback_env.split(',')]
 
 TEMP_DIR = "/dev/shm" if os.path.exists("/dev/shm") else os.getcwd()
