@@ -14,7 +14,7 @@ chat_id = os.environ.get('CHAT_ID')
 telegram_token = os.environ.get('TELEGRAM_BOT_TOKEN')
 
 # 👇 Channel Watermark
-channel_name = "Silent Breadcrumbs" 
+channel_name = "Silent Breadcrumbs®" 
 
 print(f"DEBUG: Processing {len(scenes_data)} scenes async...")
 
