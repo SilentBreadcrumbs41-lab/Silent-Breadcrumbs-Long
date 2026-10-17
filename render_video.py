@@ -196,6 +196,7 @@ async def process_scene(session, i, scene, total_scenes):
             '-filter_complex', filter_complex,
             '-map', '[v]', '-map', a_map,
             '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18',
+            '-r', '30', '-video_track_timescale', '90000', # 👇 ADDED TO PREVENT VIDEO DROPS DURING CONCAT 👇
             '-c:a', 'aac', '-b:a', '192k', '-ar', '44100', '-pix_fmt', 'yuv420p',
             '-t', str(dur), scene_filename
         ]
