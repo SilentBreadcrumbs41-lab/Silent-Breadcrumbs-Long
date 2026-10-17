@@ -14,7 +14,7 @@ chat_id = os.environ.get('CHAT_ID')
 telegram_token = os.environ.get('TELEGRAM_BOT_TOKEN')
 
 # 👇 Channel Watermark
-channel_name = "Silent Breadcrumbs®" 
+channel_name = "SB®" 
 
 print(f"DEBUG: Processing {len(scenes_data)} scenes async...")
 
@@ -246,7 +246,7 @@ async def main_pipeline():
         if os.path.exists(bgm_path):
             bgm_cmd = [
                 'ffmpeg', '-y', '-i', raw_video, '-stream_loop', '-1', '-i', bgm_path,
-                '-filter_complex', '[0:a]volume=1.0[voice];[1:a]volume=0.25[bgm];[voice][bgm]amix=inputs=2:duration=first:dropout_transition=0[aout_mix];[aout_mix]volume=2.0[aout]',
+                '-filter_complex', '[0:a]volume=1.0[voice];[1:a]volume=0.16[bgm];[voice][bgm]amix=inputs=2:duration=first:dropout_transition=0[aout_mix];[aout_mix]volume=2.0[aout]',
                 '-map', '0:v', '-map', '[aout]',
                 '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-shortest', final_video
             ]
